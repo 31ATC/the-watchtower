@@ -6,9 +6,10 @@
 <title>The Watchtower · 31 Squadron</title>
 <meta name="description" content="The Watchtower: forms and guides for cadets at 31 (Tower Hamlets) Squadron.">
 <meta name="robots" content="noindex">
+<link rel="icon" href="crest.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@500&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700&family=Cinzel:wght@600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@500&display=swap">
 
 <script>
 /* =====================================================================
@@ -37,10 +38,15 @@ var HUB = {
   --bg: #f4f1ea; --surface: #ffffff; --ink: #1e1916; --muted: #675d55; --line: #e1d9cb;
   --navy: #a3241c; --navy-ink: #fff8ec; --accent: #8a6a14; --accent-strong: #e6c662; --accent-ink: #231a05; --chip: #e7efe6;
   --green: #2e7a45; --gold-line: #d1b665;
+  --font-heraldic: "Cinzel", Georgia, "Times New Roman", serif;
   --font-display: "Barlow Condensed", "Arial Narrow", system-ui, sans-serif;
   --font-body: "Inter", system-ui, -apple-system, "Segoe UI", sans-serif;
   --font-mono: "JetBrains Mono", ui-monospace, Menlo, monospace;
   color-scheme: light;
+}
+/* Dark mode: the crest as a faint watermark behind the page */
+@media (prefers-color-scheme: dark) {
+  body::before { content: ""; position: fixed; inset: 0; background: url("crest-mark.png") center 60% / min(78vw, 560px) auto no-repeat; opacity: .07; pointer-events: none; z-index: 0; }
 }
 @media (prefers-color-scheme: dark) {
   :root {
@@ -56,18 +62,27 @@ html { -webkit-text-size-adjust: 100%; }
 body { margin: 0; background: var(--bg); color: var(--ink); font-family: var(--font-body); font-size: 15px; line-height: 1.5; }
 a { color: inherit; }
 .wrap { max-width: 720px; margin: 0 auto; padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px)); }
-header.board { background: var(--navy); color: var(--navy-ink); padding-top: env(safe-area-inset-top, 0px); border-bottom: 4px solid var(--gold-line); }
+header.board { position: relative; background: var(--navy); color: var(--navy-ink); padding-top: env(safe-area-inset-top, 0px); border-bottom: 4px solid var(--gold-line); margin-bottom: 14px; }
+/* Tower battlements along the foot of the header, from the tower in the crest */
+header.board::after { content: ""; position: absolute; left: 0; right: 0; top: 100%; height: 12px; margin-top: 4px; background: repeating-linear-gradient(90deg, var(--navy) 0 26px, transparent 26px 42px); }
+
 header.board .wrap { padding-block: 22px 26px; display: grid; gap: 14px; }
 .sq { font-family: var(--font-mono); font-size: 12px; letter-spacing: .12em; text-transform: uppercase; opacity: .75; }
 h1 { font-family: var(--font-display); font-weight: 700; font-size: clamp(34px, 9vw, 48px); line-height: 1; margin: 0; text-wrap: balance; }
 .head-main, .head-side { display: grid; gap: 14px; min-width: 0; }
 .head-main { gap: 10px; }
-.motto { font-family: var(--font-display); font-style: italic; font-weight: 500; font-size: 18px; color: var(--accent-strong); margin: 0; letter-spacing: .03em; }
+.crest-row { display: grid; grid-template-columns: auto minmax(0, 1fr); gap: 16px; align-items: center; }
+.crest { width: 84px; height: 84px; border-radius: 50%; background: #ffffff; border: 3px solid var(--gold-line); box-shadow: 0 0 0 3px var(--navy), 0 0 0 4px rgba(255,255,255,.18); padding: 5px; object-fit: contain; }
+.crest-row > div { display: grid; gap: 6px; min-width: 0; }
+.motto { font-family: var(--font-heraldic); font-weight: 600; font-size: 15px; color: var(--accent-strong); margin: 0; letter-spacing: .14em; text-transform: uppercase; }
 .tagline { margin: 0; max-width: 46ch; opacity: .92; }
 .deadline { justify-self: start; display: inline-flex; gap: 8px; align-items: baseline; border: 1px solid rgba(255,255,255,.28); border-radius: 999px; padding: 5px 12px; font-size: 13px; }
 .deadline b { font-family: var(--font-display); font-size: 17px; font-weight: 600; color: var(--accent-strong); }
-main .wrap { padding-block: 22px 40px; display: grid; gap: 28px; }
+main { position: relative; }
+main .wrap { position: relative; z-index: 1; padding-block: 34px 40px; display: grid; gap: 28px; }
 h2 { font-family: var(--font-display); font-weight: 600; font-size: 24px; margin: 0 0 4px; letter-spacing: .02em; }
+main section > h2 { display: flex; align-items: center; gap: 10px; }
+main section > h2::before { content: ""; width: 14px; height: 14px; flex: none; background: var(--gold-line); clip-path: polygon(50% 0%, 61% 35%, 98% 35%, 68% 57%, 79% 91%, 50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%); }
 .lede { color: var(--muted); margin: 0 0 12px; }
 .actions { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 10px; }
 .tile { text-decoration: none; background: var(--surface); border: 1px solid var(--line); border-radius: 12px; padding: 14px 16px; display: grid; gap: 4px; min-width: 0; color: var(--ink); }
@@ -84,7 +99,9 @@ a:focus-visible, button:focus-visible { outline: 3px solid var(--accent); outlin
 .code { font-family: var(--font-mono); font-size: 12px; background: var(--chip); color: var(--green); border-radius: 6px; padding: 6px 8px; letter-spacing: .05em; }
 .notice { border-left: 3px solid var(--accent); background: var(--surface); padding: 12px 14px; border-radius: 0 8px 8px 0; font-size: 14px; color: var(--muted); }
 .notice b { color: var(--ink); }
-footer { color: var(--muted); font-size: 13px; border-top: 1px solid var(--line); padding-top: 14px; }
+footer { color: var(--muted); font-size: 13px; border-top: 1px solid var(--line); padding-top: 14px; display: grid; gap: 6px; }
+.foot-motto { font-size: 12px; }
+.foot-motto span { font-family: var(--font-heraldic); letter-spacing: .1em; text-transform: uppercase; color: var(--accent); }
 .panel { background: var(--surface); border: 1px solid var(--line); border-radius: 14px; padding: 18px; display: grid; gap: 14px; }
 .back { font: inherit; background: none; border: 0; padding: 0; cursor: pointer; font-family: var(--font-mono); font-size: 13px; color: var(--muted); justify-self: start; text-decoration: none; }
 .steps { margin: 0; padding-left: 20px; display: grid; gap: 8px; }
@@ -98,7 +115,9 @@ footer { color: var(--muted); font-size: 13px; border-top: 1px solid var(--line)
   .wrap { max-width: 1120px; }
   header.board .wrap { grid-template-columns: minmax(0, 1fr) minmax(0, 420px); align-items: end; column-gap: 48px; padding-block: 44px 48px; }
   h1 { font-size: 64px; }
-  .motto { font-size: 22px; }
+  .motto { font-size: 17px; }
+  .crest { width: 112px; height: 112px; }
+  .crest-row { gap: 24px; }
   .tagline { font-size: 16px; }
   main .wrap { padding-block: 40px 56px; gap: 40px; }
   h2 { font-size: 28px; }
@@ -146,9 +165,13 @@ a.copy { text-decoration: none; display: inline-block; color: var(--navy-ink) !i
 <header class="board">
   <div class="wrap">
     <div class="head-main">
-      <div class="sq" id="sq-name">31 (Tower Hamlets) Squadron</div>
-      <h1 id="hub-name">The Watchtower</h1>
-      <p class="motto">A Magnis Ad Majora</p>
+      <div class="crest-row">
+        <img class="crest" id="crest" src="crest.png" alt="31 (Tower Hamlets) Squadron crest" width="112" height="112">
+        <div>
+          <div class="sq" id="sq-name">31 (Tower Hamlets) Squadron</div>
+          <h1 id="hub-name">The Watchtower</h1>
+        </div>
+      </div>
     </div>
     <div class="head-side">
       <p class="tagline">Claim badges, request exams, update your details and find our guides, all in one place.</p>
@@ -180,7 +203,7 @@ a.copy { text-decoration: none; display: inline-block; color: var(--navy-ink) !i
 
     <div class="notice"><b>Your information.</b> What you send through these forms goes only to our squadron staff. We use it to update your record and then delete it.</div>
 
-    <footer>For any further questions, please speak to the Adj team.</footer>
+    <footer>For any further questions, please speak to the Adj team.<span class="foot-motto"><span>A Magnis Ad Majora</span> · From great things to greater</span></footer>
   </div>
 
   <div class="wrap" id="view-o18" hidden>
@@ -312,6 +335,10 @@ Full Name: [your full name]</pre>
 
 <script>
 (function () {
+  // Hide the crest if crest.png hasn't been uploaded
+  var crest = document.getElementById("crest");
+  if (crest) crest.addEventListener("error", function () { crest.hidden = true; });
+
   // Header text from settings
   document.getElementById("sq-name").textContent = HUB.squadronName;
   document.getElementById("hub-name").textContent = HUB.hubName;
