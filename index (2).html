@@ -1,0 +1,223 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>The Watchtower · 31 Squadron</title>
+<meta name="description" content="The Watchtower: forms and guides for cadets at 31 (Tower Hamlets) Squadron.">
+<meta name="robots" content="noindex">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@500&display=swap">
+
+<script>
+/* =====================================================================
+   SETTINGS — edit this block, nothing else needs changing.
+   Paste each Microsoft Form link between the quote marks.
+   Leave a link as "" and its button shows "Coming soon".
+   ===================================================================== */
+var HUB = {
+  hubName: "The Watchtower",    // Name shown at the top of the page
+  squadronName: "31 (Tower Hamlets) Squadron",
+  claimsClose: "Thursday 18:00",// Badge claim deadline shown in the header
+  links: {
+    badgeForm: "https://forms.cloud.microsoft/Pages/ResponsePage.aspx?id=y3LeFstyF0yt2ZBENpCsg8z0Z8uLiQtNs81R3TrICvNURU9RM1Y2N0NYUVU2NE5PQjVBMUc0M0FNUS4u",              // Badge Claim form
+    classificationForm: "https://forms.cloud.microsoft/Pages/ResponsePage.aspx?id=y3LeFstyF0yt2ZBENpCsg8z0Z8uLiQtNs81R3TrICvNUNjZKMUlORVNaUllQOTdJRUxOUUJTT0RBOC4u",     // Classification Request form
+    detailsForm: "https://forms.cloud.microsoft/Pages/ResponsePage.aspx?id=y3LeFstyF0yt2ZBENpCsg8z0Z8uLiQtNs81R3TrICvNUNklCUlhUWDYyQUJYODBIRFk2RzVFUUdJUy4u",            // Details Change form
+    o18Guide: "",               // Full O18 guide (e.g. a PDF or SharePoint link that anyone can view)
+    cpGuide: ""                 // Full Cadet Portal login guide
+  }
+};
+</script>
+
+<style>
+/* Layout: phone-first single column; a crest-red header band, action tiles, then guides.
+   Colours from the squadron crest: heraldic red, crown gold, sea-lion green, tower stone. */
+:root {
+  --bg: #f4f1ea; --surface: #ffffff; --ink: #1e1916; --muted: #675d55; --line: #e1d9cb;
+  --navy: #a3241c; --navy-ink: #fff8ec; --accent: #8a6a14; --accent-strong: #e6c662; --accent-ink: #231a05; --chip: #e7efe6;
+  --green: #2e7a45; --gold-line: #d1b665;
+  --font-display: "Barlow Condensed", "Arial Narrow", system-ui, sans-serif;
+  --font-body: "Inter", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, Menlo, monospace;
+  color-scheme: light;
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #141110; --surface: #1f1a18; --ink: #f1ebe3; --muted: #b0a59a; --line: #382f2a;
+    --navy: #6f1712; --navy-ink: #fff3e3; --accent: #e3c160; --accent-strong: #ecca6a; --chip: #1c2d21;
+    --green: #6cc489; --gold-line: #a8893d;
+    color-scheme: dark;
+  }
+}
+* { box-sizing: border-box; }
+[hidden] { display: none !important; }
+html { -webkit-text-size-adjust: 100%; }
+body { margin: 0; background: var(--bg); color: var(--ink); font-family: var(--font-body); font-size: 15px; line-height: 1.5; }
+a { color: inherit; }
+.wrap { max-width: 720px; margin: 0 auto; padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px)); }
+header.board { background: var(--navy); color: var(--navy-ink); padding-top: env(safe-area-inset-top, 0px); border-bottom: 4px solid var(--gold-line); }
+header.board .wrap { padding-block: 22px 26px; display: grid; gap: 14px; }
+.sq { font-family: var(--font-mono); font-size: 12px; letter-spacing: .12em; text-transform: uppercase; opacity: .75; }
+h1 { font-family: var(--font-display); font-weight: 700; font-size: clamp(34px, 9vw, 48px); line-height: 1; margin: 0; text-wrap: balance; }
+.head-main, .head-side { display: grid; gap: 14px; min-width: 0; }
+.head-main { gap: 10px; }
+.motto { font-family: var(--font-display); font-style: italic; font-weight: 500; font-size: 18px; color: var(--accent-strong); margin: 0; letter-spacing: .03em; }
+.tagline { margin: 0; max-width: 46ch; opacity: .92; }
+.deadline { justify-self: start; display: inline-flex; gap: 8px; align-items: baseline; border: 1px solid rgba(255,255,255,.28); border-radius: 999px; padding: 5px 12px; font-size: 13px; }
+.deadline b { font-family: var(--font-display); font-size: 17px; font-weight: 600; color: var(--accent-strong); }
+main .wrap { padding-block: 22px 40px; display: grid; gap: 28px; }
+h2 { font-family: var(--font-display); font-weight: 600; font-size: 24px; margin: 0 0 4px; letter-spacing: .02em; }
+.lede { color: var(--muted); margin: 0 0 12px; }
+.actions { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 10px; }
+.tile { text-decoration: none; background: var(--surface); border: 1px solid var(--line); border-radius: 12px; padding: 14px 16px; display: grid; gap: 4px; min-width: 0; color: var(--ink); }
+a.tile:hover { border-color: var(--accent); }
+a:focus-visible, button:focus-visible { outline: 3px solid var(--accent); outline-offset: 2px; }
+.tile strong { font-family: var(--font-display); font-size: 20px; font-weight: 600; display: flex; justify-content: space-between; align-items: center; gap: 8px; }
+.tile span.d { color: var(--muted); font-size: 13.5px; }
+.go { font-family: var(--font-mono); font-size: 13px; color: var(--accent); }
+.tile.off { opacity: .6; cursor: default; }
+.tile.off .go { color: var(--muted); }
+.guides { display: grid; gap: 10px; }
+.guide { display: grid; grid-template-columns: auto minmax(0,1fr) auto; gap: 14px; align-items: center; }
+.guide > span:nth-child(2) { display: grid; gap: 4px; }
+.code { font-family: var(--font-mono); font-size: 12px; background: var(--chip); color: var(--green); border-radius: 6px; padding: 6px 8px; letter-spacing: .05em; }
+.notice { border-left: 3px solid var(--accent); background: var(--surface); padding: 12px 14px; border-radius: 0 8px 8px 0; font-size: 14px; color: var(--muted); }
+.notice b { color: var(--ink); }
+footer { color: var(--muted); font-size: 13px; border-top: 1px solid var(--line); padding-top: 14px; }
+.panel { background: var(--surface); border: 1px solid var(--line); border-radius: 14px; padding: 18px; display: grid; gap: 14px; }
+.back { font: inherit; background: none; border: 0; padding: 0; cursor: pointer; font-family: var(--font-mono); font-size: 13px; color: var(--muted); justify-self: start; text-decoration: none; }
+.steps { margin: 0; padding-left: 20px; display: grid; gap: 8px; }
+.steps li::marker { font-family: var(--font-mono); color: var(--green); }
+.btn { justify-self: start; text-decoration: none; background: var(--navy); color: var(--navy-ink); font-family: var(--font-display); font-size: 19px; font-weight: 600; letter-spacing: .03em; padding: 11px 18px; border-radius: 10px; }
+@media (prefers-color-scheme: dark) { .btn { background: var(--accent); color: var(--accent-ink); } }
+.soon { color: var(--muted); font-style: italic; margin: 0; }
+@media (prefers-reduced-motion: no-preference) { .tile { transition: border-color .15s; } }
+/* Desktop and tablet: wider page, header in two columns, tiles side by side */
+@media (min-width: 900px) {
+  .wrap { max-width: 1120px; }
+  header.board .wrap { grid-template-columns: minmax(0, 1fr) minmax(0, 420px); align-items: end; column-gap: 48px; padding-block: 44px 48px; }
+  h1 { font-size: 64px; }
+  .motto { font-size: 22px; }
+  .tagline { font-size: 16px; }
+  main .wrap { padding-block: 40px 56px; gap: 40px; }
+  h2 { font-size: 28px; }
+  .actions { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px; }
+  .actions .tile { padding: 20px 22px; align-content: start; }
+  .guides { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px; }
+  .guides .tile { padding: 18px 22px; }
+  .notice { max-width: 760px; }
+  #view-o18, #view-cp { max-width: 800px; }
+}
+@media (max-width: 420px) { .guide { grid-template-columns: minmax(0,1fr) auto; } .guide .code { display: none; } }
+</style>
+</head>
+<body>
+
+<header class="board">
+  <div class="wrap">
+    <div class="head-main">
+      <div class="sq" id="sq-name">31 (Tower Hamlets) Squadron</div>
+      <h1 id="hub-name">The Watchtower</h1>
+      <p class="motto">A Magnis Ad Majora</p>
+    </div>
+    <div class="head-side">
+      <p class="tagline">Claim badges, request exams, update your details and find our guides, all in one place.</p>
+      <div class="deadline">Badge claims close <b id="claims-close">Thursday 18:00</b></div>
+    </div>
+  </div>
+</header>
+
+<main>
+  <div class="wrap" id="view-home">
+    <section>
+      <h2>Tell the staff team</h2>
+      <p class="lede">Takes about a minute on your phone. No sign-in needed.</p>
+      <div class="actions">
+        <a class="tile" data-link="badgeForm"><strong>Claim a badge <span class="go">↗</span></strong><span class="d">Earned a badge this week? Claim it so it's presented on final parade.</span></a>
+        <a class="tile" data-link="classificationForm"><strong>Request classification exams <span class="go">↗</span></strong><span class="d">Ready for Leading, Senior or Master? Ask staff to assign your exams.</span></a>
+        <a class="tile" data-link="detailsForm"><strong>Update my details <span class="go">↗</span></strong><span class="d">New address, phone, email or school. For medical changes, speak to staff.</span></a>
+      </div>
+    </section>
+
+    <section>
+      <h2>Guides</h2>
+      <p class="lede">Step-by-step help, written by our staff team.</p>
+      <div class="guides">
+        <a class="tile guide" href="#o18"><span class="code">O18</span><span><strong>Turning 18: staff cadet or CFAV</strong><span class="d">What happens when you turn 18 and how to stay on as staff.</span></span><span class="go">→</span></a>
+        <a class="tile guide" href="#cp"><span class="code">CP</span><span><strong>Logging in to Cadet Portal</strong><span class="d">First-time setup, password resets and getting unlocked.</span></span><span class="go">→</span></a>
+      </div>
+    </section>
+
+    <div class="notice"><b>Your information.</b> What you send through these forms goes only to our squadron staff. We use it to update your record and then delete it.</div>
+
+    <footer>For any further questions, please speak to the Adj team.</footer>
+  </div>
+
+  <div class="wrap" id="view-o18" hidden>
+    <a class="back" href="#">← Back to hub</a>
+    <article class="panel">
+      <div><span class="code">O18</span><h2 style="margin-top:10px">Turning 18: staff cadet or CFAV</h2>
+      <p class="lede">When you turn 18 you can stay on as a staff cadet or become an adult volunteer (CFAV). Start the conversation a few months before your birthday.</p></div>
+      <ol class="steps">
+        <li>Talk to the OC or Adjutant a few months before your 18th birthday.</li>
+        <li>Choose your route: staff cadet or CFAV.</li>
+        <li>Complete the paperwork and checks for your route.</li>
+        <li>Complete the required training.</li>
+        <li>Get confirmed in your new role.</li>
+      </ol>
+      <a class="btn" data-link="o18Guide">Open the full guide</a>
+    </article>
+  </div>
+
+  <div class="wrap" id="view-cp" hidden>
+    <a class="back" href="#">← Back to hub</a>
+    <article class="panel">
+      <div><span class="code">CP</span><h2 style="margin-top:10px">Logging in to Cadet Portal</h2>
+      <p class="lede">Help with logging in for the first time, resetting your password and getting unlocked.</p></div>
+      <ol class="steps">
+        <li>First time logging in</li>
+        <li>Forgotten password</li>
+        <li>Locked out, or the account isn't working</li>
+        <li>Who to ask on parade night</li>
+      </ol>
+      <a class="btn" data-link="cpGuide">Open the full guide</a>
+    </article>
+  </div>
+</main>
+
+<script>
+(function () {
+  // Header text from settings
+  document.getElementById("sq-name").textContent = HUB.squadronName;
+  document.getElementById("hub-name").textContent = HUB.hubName;
+  document.getElementById("claims-close").textContent = HUB.claimsClose;
+
+  // Links from settings; missing links become "Coming soon"
+  document.querySelectorAll("[data-link]").forEach(function (el) {
+    var url = (HUB.links[el.getAttribute("data-link")] || "").trim();
+    if (url) {
+      el.href = url; el.target = "_blank"; el.rel = "noopener";
+    } else if (el.classList.contains("btn")) {
+      var p = document.createElement("p"); p.className = "soon"; p.textContent = "Full guide coming soon.";
+      el.replaceWith(p);
+    } else {
+      el.classList.add("off"); el.setAttribute("aria-disabled", "true");
+      el.querySelector(".go").textContent = "Coming soon";
+    }
+  });
+
+  // Simple page switching for the two guide pages
+  var views = ["home", "o18", "cp"];
+  function show() {
+    var h = (location.hash || "#home").slice(1);
+    if (views.indexOf(h) < 0) h = "home";
+    views.forEach(function (v) { document.getElementById("view-" + v).hidden = v !== h; });
+    window.scrollTo(0, 0);
+  }
+  window.addEventListener("hashchange", show);
+  show();
+})();
+</script>
+</body>
+</html>
