@@ -6,7 +6,7 @@
 <title>The Watchtower · 31 Squadron</title>
 <meta name="description" content="The Watchtower: forms and guides for cadets at 31 (Tower Hamlets) Squadron.">
 <meta name="robots" content="noindex">
-<link rel="icon" href="crest.png">
+<link rel="icon" href="emblem.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700&family=Cinzel:wght@600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@500&display=swap">
@@ -72,7 +72,7 @@ h1 { font-family: var(--font-display); font-weight: 700; font-size: clamp(34px, 
 .head-main, .head-side { display: grid; gap: 14px; min-width: 0; }
 .head-main { gap: 10px; }
 .crest-row { display: grid; grid-template-columns: auto minmax(0, 1fr); gap: 16px; align-items: center; }
-.crest { width: 84px; height: 84px; border-radius: 50%; background: #ffffff; border: 3px solid var(--gold-line); box-shadow: 0 0 0 3px var(--navy), 0 0 0 4px rgba(255,255,255,.18); padding: 5px; object-fit: contain; }
+.crest { height: 104px; width: auto; display: block; filter: drop-shadow(0 6px 10px rgba(0,0,0,.35)); }
 .crest-row > div { display: grid; gap: 6px; min-width: 0; }
 .motto { font-family: var(--font-heraldic); font-weight: 600; font-size: 15px; color: var(--accent-strong); margin: 0; letter-spacing: .14em; text-transform: uppercase; }
 .tagline { margin: 0; max-width: 46ch; opacity: .92; }
@@ -116,7 +116,7 @@ footer { color: var(--muted); font-size: 13px; border-top: 1px solid var(--line)
   header.board .wrap { grid-template-columns: minmax(0, 1fr) minmax(0, 420px); align-items: end; column-gap: 48px; padding-block: 44px 48px; }
   h1 { font-size: 64px; }
   .motto { font-size: 17px; }
-  .crest { width: 112px; height: 112px; }
+  .crest { height: 150px; width: auto; }
   .crest-row { gap: 24px; }
   .tagline { font-size: 16px; }
   main .wrap { padding-block: 40px 56px; gap: 40px; }
@@ -133,7 +133,7 @@ footer { color: var(--muted); font-size: 13px; border-top: 1px solid var(--line)
   .wrap { max-width: min(1520px, 90vw); }
   body { font-size: 16px; }
   h1 { font-size: 76px; }
-  .crest { width: 128px; height: 128px; }
+  .crest { height: 180px; width: auto; }
   header.board .wrap { grid-template-columns: minmax(0, 1fr) minmax(0, 480px); padding-block: 52px 56px; }
   .tagline { font-size: 17px; }
   h2 { font-size: 32px; }
@@ -184,7 +184,7 @@ a.copy { text-decoration: none; display: inline-block; color: var(--navy-ink) !i
   <div class="wrap">
     <div class="head-main">
       <div class="crest-row">
-        <img class="crest" id="crest" src="crest.png" alt="31 (Tower Hamlets) Squadron crest" width="112" height="112">
+        <img class="crest" id="crest" src="emblem.png" alt="31 Squadron emblem: a sea lion on a tower with a star" width="348" height="544">
         <div>
           <div class="sq" id="sq-name">31 (Tower Hamlets) Squadron</div>
           <h1 id="hub-name">The Watchtower</h1>
@@ -353,7 +353,7 @@ Full Name: [your full name]</pre>
 
 <script>
 (function () {
-  // Hide the crest if crest.png hasn't been uploaded
+  // Hide the emblem if emblem.png hasn't been uploaded
   var crest = document.getElementById("crest");
   if (crest) crest.addEventListener("error", function () { crest.hidden = true; });
 
