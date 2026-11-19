@@ -24,8 +24,8 @@ var HUB = {
     badgeForm: "https://forms.cloud.microsoft/Pages/ResponsePage.aspx?id=y3LeFstyF0yt2ZBENpCsg8z0Z8uLiQtNs81R3TrICvNURU9RM1Y2N0NYUVU2NE5PQjVBMUc0M0FNUS4u",              // Badge Claim form
     classificationForm: "https://forms.cloud.microsoft/Pages/ResponsePage.aspx?id=y3LeFstyF0yt2ZBENpCsg8z0Z8uLiQtNs81R3TrICvNUNjZKMUlORVNaUllQOTdJRUxOUUJTT0RBOC4u",     // Classification Request form
     detailsForm: "https://forms.cloud.microsoft/Pages/ResponsePage.aspx?id=y3LeFstyF0yt2ZBENpCsg8z0Z8uLiQtNs81R3TrICvNUNklCUlhUWDYyQUJYODBIRFk2RzVFUUdJUy4u",            // Details Change form
-    o18Guide: "",               // Full O18 guide (e.g. a PDF or SharePoint link that anyone can view)
-    cpGuide: ""                 // Full Cadet Portal login guide
+    cpGuide: "",                // Full Cadet Portal login guide
+    bpssForm: "BLANK%20BPSS%20FORM.docx" // Blank BPSS form uploaded next to index.html (%20 = a space)
   }
 };
 </script>
@@ -110,6 +110,35 @@ footer { color: var(--muted); font-size: 13px; border-top: 1px solid var(--line)
   #view-o18, #view-cp { max-width: 800px; }
 }
 @media (max-width: 420px) { .guide { grid-template-columns: minmax(0,1fr) auto; } .guide .code { display: none; } }
+
+/* Staff Cadet guide */
+.guidepage h3 { font-family: var(--font-display); font-weight: 600; font-size: 20px; margin: 0 0 8px; }
+.callout { background: var(--chip); border-left: 3px solid var(--navy); border-radius: 0 8px 8px 0; padding: 12px 14px; }
+.step { border: 1px solid var(--line); border-radius: 12px; background: var(--bg); }
+.step summary { cursor: pointer; list-style: none; display: flex; gap: 12px; align-items: center; padding: 14px 16px; font-family: var(--font-display); font-size: 20px; font-weight: 600; }
+.step summary::-webkit-details-marker { display: none; }
+.step summary::after { content: "+"; margin-left: auto; font-family: var(--font-mono); color: var(--accent); }
+.step[open] summary::after { content: "−"; }
+.num { font-family: var(--font-mono); font-size: 13px; background: var(--navy); color: var(--navy-ink); border-radius: 999px; width: 26px; height: 26px; display: inline-grid; place-items: center; flex: none; }
+.step .body { padding: 0 16px 16px; display: grid; gap: 10px; min-width: 0; }
+.step .body p { margin: 0; }
+.sub { margin: 0; padding-left: 20px; display: grid; gap: 6px; }
+.kv { display: grid; grid-template-columns: auto minmax(0,1fr); gap: 6px 14px; margin: 0; }
+.kv dt { font-weight: 600; }
+.kv dd { margin: 0; overflow-wrap: anywhere; }
+.guidepage a:not(.back):not(.btn) { color: var(--accent); }
+.template { display: grid; gap: 8px; }
+.template pre { margin: 0; white-space: pre-wrap; background: var(--surface); border: 1px dashed var(--line); border-radius: 8px; padding: 12px; font-family: var(--font-mono); font-size: 13px; overflow-wrap: anywhere; }
+.dl { display: grid; gap: 8px; }
+a.copy { text-decoration: none; display: inline-block; color: var(--navy-ink) !important; }
+.copy { justify-self: start; font: inherit; font-weight: 600; font-size: 14px; cursor: pointer; background: var(--navy); color: var(--navy-ink); border: 0; border-radius: 8px; padding: 8px 14px; }
+.small { font-size: 13.5px; color: var(--muted); margin: 0; }
+.checklist ul { list-style: none; margin: 10px 0 0; padding: 0; display: grid; gap: 4px; }
+.checklist label { display: flex; gap: 10px; align-items: flex-start; padding: 8px 10px; border-radius: 8px; cursor: pointer; }
+.checklist label:hover { background: var(--bg); }
+.checklist input { width: 18px; height: 18px; margin-top: 2px; accent-color: var(--green); flex: none; }
+.checklist label:has(input:checked) { color: var(--muted); text-decoration: line-through; }
+#view-o18 .panel { gap: 16px; }
 </style>
 </head>
 <body>
@@ -144,7 +173,7 @@ footer { color: var(--muted); font-size: 13px; border-top: 1px solid var(--line)
       <h2>Guides</h2>
       <p class="lede">Step-by-step help, written by the Adj team.</p>
       <div class="guides">
-        <a class="tile guide" href="#o18"><span class="code">O18</span><span><strong>Turning 18: staff cadet or CFAV</strong><span class="d">What happens when you turn 18 and how to stay on as staff.</span></span><span class="go">→</span></a>
+        <a class="tile guide" href="#o18"><span class="code">O18</span><span><strong>Becoming a Staff Cadet</strong><span class="d">Are you 17 years and 3 months or older? Here's how to stay on after your 18th birthday.</span></span><span class="go">→</span></a>
         <a class="tile guide" href="#cp"><span class="code">CP</span><span><strong>Logging in to Cadet Portal</strong><span class="d">First-time setup, password resets and getting unlocked.</span></span><span class="go">→</span></a>
       </div>
     </section>
@@ -156,17 +185,112 @@ footer { color: var(--muted); font-size: 13px; border-top: 1px solid var(--line)
 
   <div class="wrap" id="view-o18" hidden>
     <a class="back" href="#">← Back to hub</a>
-    <article class="panel">
-      <div><span class="code">O18</span><h2 style="margin-top:10px">Turning 18: staff cadet or CFAV</h2>
-      <p class="lede">When you turn 18 you can stay on as a staff cadet or become an adult volunteer (CFAV). Start the conversation a few months before your birthday.</p></div>
-      <ol class="steps">
-        <li>Talk to the OC or Adjutant a few months before your 18th birthday.</li>
-        <li>Choose your route: staff cadet or CFAV.</li>
-        <li>Complete the paperwork and checks for your route.</li>
-        <li>Complete the required training.</li>
-        <li>Get confirmed in your new role.</li>
-      </ol>
-      <a class="btn" data-link="o18Guide">Open the full guide</a>
+    <article class="panel guidepage">
+      <div><span class="code">O18</span><h2 style="margin-top:10px">Becoming a Staff Cadet</h2>
+      <p class="lede">Are you 17 years and 3 months or older? To stay in the Air Cadets after your 18th birthday, you need to become a Staff Cadet. That means completing some checks, forms and training first. This guide walks you through each step.</p></div>
+
+      <div class="callout"><b>Important:</b> at the very least, your <b>DBS</b> and <b>Safeguarding training</b> must be complete before your 18th birthday, or you can't stay on. Please don't leave it until the last minute.</div>
+
+      <div class="overview">
+        <h3>What you need to do</h3>
+        <ol class="steps">
+          <li>DBS application, through U-Check</li>
+          <li>BPSS forms</li>
+          <li>Safeguarding Induction, on RAFAC Learn</li>
+          <li>AVIP course</li>
+          <li>Mandatory learning and agreements</li>
+        </ol>
+      </div>
+
+      <details class="step" id="s-dbs">
+        <summary><span class="num">1</span> DBS application</summary>
+        <div class="body">
+          <p>Email Wing HQ and ask to be added to the U-Check portal so your DBS application can be started.</p>
+          <dl class="kv">
+            <dt>Send to</dt><dd><a href="mailto:RAFAC-LASER-AllUsers-Pers@mod.gov.uk">RAFAC-LASER-AllUsers-Pers@mod.gov.uk</a></dd>
+            <dt>CC</dt><dd><a href="mailto:Adj.31@rafac.mod.gov.uk">Adj.31@rafac.mod.gov.uk</a> (Squadron Adjutant)</dd>
+            <dt>Subject</dt><dd>U-Check / DBS Portal Request</dd>
+          </dl>
+          <p>Copy this message and replace the parts in square brackets with your own details:</p>
+          <div class="template">
+            <pre id="dbs-template">I, [your full name], give permission for RAFAC WHQ to add me to the U-Check portal.
+
+My personal email address is provided below:
+
+Email: [your personal email address]
+Full Name: [your full name]</pre>
+            <button type="button" class="copy" data-copy="dbs-template">Copy message</button>
+          </div>
+          <p class="small">Use a personal email address that you can always get into, not a school one.</p>
+        </div>
+      </details>
+
+      <details class="step" id="s-bpss">
+        <summary><span class="num">2</span> BPSS forms</summary>
+        <div class="body">
+          <p>You can complete the BPSS forms digitally or on paper.</p>
+          <div class="dl" data-file="bpssForm" hidden>
+            <a class="copy" id="bpss-link" download>Download the blank BPSS form (Word)</a>
+            <p class="small">Fill it in using Word on your phone or computer, save it, then email it to <a href="mailto:Adj.31@rafac.mod.gov.uk">Adj.31@rafac.mod.gov.uk</a>. Don't send it through WhatsApp or social media, because it contains your personal details.</p>
+          </div>
+          <p>Prefer paper? Ask <b>Fg Off Makwana-Mehmi</b> or <b>CI Ciftci</b> for a copy. Either way, return it as soon as you can.</p>
+        </div>
+      </details>
+
+      <details class="step" id="s-safe">
+        <summary><span class="num">3</span> Safeguarding Induction</summary>
+        <div class="body">
+          <ol class="sub">
+            <li>Log in to <b>RAFAC Learn</b>.</li>
+            <li>Select <b>Course Explorer</b>.</li>
+            <li>Search for <b>Safeguarding Induction</b> and open the course.</li>
+            <li>Complete every section.</li>
+          </ol>
+          <p class="small">Check that the course shows as completed when you've finished.</p>
+        </div>
+      </details>
+
+      <details class="step" id="s-avip">
+        <summary><span class="num">4</span> AVIP course</summary>
+        <div class="body">
+          <p>You don't need to arrange this yourself. <b>CI Ciftci</b> or <b>Fg Off Makwana-Mehmi</b> will book you onto an available course. Once you have a date, make sure you attend.</p>
+        </div>
+      </details>
+
+      <details class="step" id="s-mand">
+        <summary><span class="num">5</span> Mandatory learning and agreements</summary>
+        <div class="body">
+          <p>All Staff Cadets must also complete these squadron requirements:</p>
+          <ol class="sub">
+            <li><b>Cadet Code of Conduct.</b> In Cadet Portal, go to Agreements, then Cadet Code of Conduct. Read and accept it.</li>
+            <li><b>Prevent Awareness, Course 1 only.</b> <a href="https://www.support-people-susceptible-to-radicalisation.service.gov.uk/portal#awareness-course" target="_blank" rel="noopener">Open the Prevent Awareness course</a>.</li>
+            <li><b>Responsible for Information</b>, on RAFAC Learn.</li>
+            <li><b>Safeguarding Awareness</b>, on RAFAC Learn.</li>
+            <li><b>Security Advice Brief</b>, on RAFAC Learn.</li>
+            <li><b>Staff Cadet Service Agreement.</b> A paper form to print, complete and sign. Ask CI Ciftci or Fg Off Makwana-Mehmi for a copy.</li>
+          </ol>
+        </div>
+      </details>
+
+      <section class="checklist">
+        <h3>Your checklist</h3>
+        <p class="small">Tick things off as you go. Your ticks are saved on this device only, so let the Adj team know when you finish each one.</p>
+        <ul id="o18-checks">
+          <li><label><input type="checkbox" data-key="ucheck"> DBS / U-Check request sent</label></li>
+          <li><label><input type="checkbox" data-key="dbs"> DBS application completed</label></li>
+          <li><label><input type="checkbox" data-key="bpss"> BPSS forms completed and returned</label></li>
+          <li><label><input type="checkbox" data-key="safeind"> Safeguarding Induction completed</label></li>
+          <li><label><input type="checkbox" data-key="avip"> AVIP course completed</label></li>
+          <li><label><input type="checkbox" data-key="code"> Cadet Code of Conduct accepted</label></li>
+          <li><label><input type="checkbox" data-key="prevent"> Prevent Awareness, Course 1 completed</label></li>
+          <li><label><input type="checkbox" data-key="rfi"> Responsible for Information completed</label></li>
+          <li><label><input type="checkbox" data-key="safeaw"> Safeguarding Awareness completed</label></li>
+          <li><label><input type="checkbox" data-key="sab"> Security Advice Brief completed</label></li>
+          <li><label><input type="checkbox" data-key="sca"> Staff Cadet Service Agreement signed and returned</label></li>
+        </ul>
+      </section>
+
+      <p class="small">Stuck on a course, form or system? Speak to Fg Off Makwana-Mehmi or CI Ciftci.</p>
     </article>
   </div>
 
@@ -205,6 +329,37 @@ footer { color: var(--muted); font-size: 13px; border-top: 1px solid var(--line)
       el.classList.add("off"); el.setAttribute("aria-disabled", "true");
       el.querySelector(".go").textContent = "Coming soon";
     }
+  });
+
+  // Downloadable files (shown only once a file is set in SETTINGS)
+  document.querySelectorAll("[data-file]").forEach(function (box) {
+    var url = (HUB.links[box.getAttribute("data-file")] || "").trim();
+    if (!url) return;
+    box.querySelector("a[download]").href = url;
+    box.hidden = false;
+  });
+
+  // Copy buttons
+  document.querySelectorAll("[data-copy]").forEach(function (b) {
+    b.addEventListener("click", function () {
+      var el = document.getElementById(b.getAttribute("data-copy"));
+      var text = el.textContent;
+      function done() { b.textContent = "Copied"; setTimeout(function () { b.textContent = "Copy message"; }, 2000); }
+      function fallback() { var r = document.createRange(); r.selectNodeContents(el); var sel = window.getSelection(); sel.removeAllRanges(); sel.addRange(r); try { document.execCommand("copy"); done(); } catch (e) {} }
+      if (navigator.clipboard && navigator.clipboard.writeText) navigator.clipboard.writeText(text).then(done, fallback); else fallback();
+    });
+  });
+
+  // Checklist ticks saved on this device
+  var KEY = "watchtower-o18-checks";
+  var saved = {};
+  try { saved = JSON.parse(localStorage.getItem(KEY) || "{}"); } catch (e) {}
+  document.querySelectorAll("#o18-checks input").forEach(function (c) {
+    c.checked = !!saved[c.getAttribute("data-key")];
+    c.addEventListener("change", function () {
+      saved[c.getAttribute("data-key")] = c.checked;
+      try { localStorage.setItem(KEY, JSON.stringify(saved)); } catch (e) {}
+    });
   });
 
   // Simple page switching for the two guide pages
