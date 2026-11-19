@@ -128,6 +128,24 @@ footer { color: var(--muted); font-size: 13px; border-top: 1px solid var(--line)
   .notice { max-width: 760px; }
   #view-o18, #view-cp { max-width: 800px; }
 }
+/* Large desktop screens: use more of the width so the page doesn't look narrow */
+@media (min-width: 1400px) {
+  .wrap { max-width: min(1520px, 90vw); }
+  body { font-size: 16px; }
+  h1 { font-size: 76px; }
+  .crest { width: 128px; height: 128px; }
+  header.board .wrap { grid-template-columns: minmax(0, 1fr) minmax(0, 480px); padding-block: 52px 56px; }
+  .tagline { font-size: 17px; }
+  h2 { font-size: 32px; }
+  .lede { font-size: 16px; }
+  .actions, .guides { gap: 20px; }
+  .actions .tile { padding: 26px 28px; }
+  .guides .tile { padding: 22px 28px; }
+  .tile strong { font-size: 23px; }
+  .tile span.d { font-size: 15px; }
+  .notice { max-width: 900px; font-size: 15px; }
+  #view-o18, #view-cp { max-width: 960px; }
+}
 @media (max-width: 420px) { .guide { grid-template-columns: minmax(0,1fr) auto; } .guide .code { display: none; } }
 
 /* Staff Cadet guide */
